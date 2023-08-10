@@ -1,0 +1,182 @@
+/* #region - Clear CSS */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+display: block;
+}
+body {
+line-height: 1;
+}
+ol, ul {
+list-style: none;
+}
+blockquote, q {
+quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+content: '';
+content: none;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+a
+{
+    text-decoration: none;
+}
+
+
+*
+{
+    font-family:"Outfit", sans-serif;
+}
+
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(230, 230, 230);
+   
+}
+#contenMain
+{
+    width: 40rem;
+    display: flex;
+    justify-content: center;
+    height: 24rem;
+    margin-top: 5%;
+    margin-bottom: 1%;
+    box-shadow: 1px 2px 5px rgb(53, 52, 52);
+    border-radius: 8px;
+    background: rgba(43,42,43,1);
+    background: -moz-linear-gradient(-45deg, rgba(43,42,43,1) 0%, rgba(36,66,53,1) 26%, rgba(22,114,73,1) 77%, rgba(17,133,81,1) 97%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(43,42,43,1)), color-stop(26%, rgba(36,66,53,1)), color-stop(77%, rgba(22,114,73,1)), color-stop(97%, rgba(17,133,81,1)));
+    background: -webkit-linear-gradient(-45deg, rgba(43,42,43,1) 0%, rgba(36,66,53,1) 26%, rgba(22,114,73,1) 77%, rgba(17,133,81,1) 97%);
+    background: -o-linear-gradient(-45deg, rgba(43,42,43,1) 0%, rgba(36,66,53,1) 26%, rgba(22,114,73,1) 77%, rgba(17,133,81,1) 97%);
+    background: -ms-linear-gradient(-45deg, rgba(43,42,43,1) 0%, rgba(36,66,53,1) 26%, rgba(22,114,73,1) 77%, rgba(17,133,81,1) 97%);
+    background: linear-gradient(135deg, rgba(43,42,43,1) 0%, rgba(36,66,53,1) 26%, rgba(22,114,73,1) 77%, rgba(17,133,81,1) 97%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2b2a2b', endColorstr='#118551', GradientType=1 );
+   
+}
+.contenSection
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items:center;
+    border: none;
+    padding: 2%;
+    width:100%;
+}
+.inputGap
+{
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+
+}
+input
+{
+    padding: 0.7rem;
+    outline: none;
+    border: none;
+    font-weight: 400;
+    font-size: 0.8rem;
+    background: transparent;
+    width: max-content;
+    border-bottom: 1px solid rgb(147, 148, 146);
+    width:90%;
+}
+.back1
+{
+    background-color: #ffffff;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    gap:2rem;
+}
+.title1
+{
+    text-align: center;
+    width: 15rem;
+    font-weight: 500;
+    font-size: 1.8rem; 
+    font-family:"Outfit";
+    color: rgb(147, 148, 146);
+}
+.regisBut
+{
+    background-color: rgba(235, 129, 42 );
+    border-radius: 2px;
+    color: #ffffff;
+    width: 9rem;
+    height: 3rem;
+    border:none;
+    cursor: pointer;
+}
+
+.back2
+{
+    
+    gap:1rem; 
+    background-color: transparent;
+    
+}
+.title2
+{
+    text-align: center;
+    width: 15rem;
+    font-weight: 500;
+    font-size: 1.8rem; 
+    font-family:"Outfit";
+    color:#ffffff;
+}
+.gpLink
+{
+    margin-top: 18%;
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+
+}
+.back2 a
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:#ffffff;
+    font-family:"Outfit";
+    font-size: 0.8rem; 
+    padding: 5%;
+    border-radius: 2px;
+    height: 1.5rem  ;
+    width:100%;
+}
+.a1
+{background-color: rgb(59, 89, 153);}
+.a2
+{background-color: rgb(28, 181, 178);}
+.a3
+{background-color:rgb(227,65,51);}

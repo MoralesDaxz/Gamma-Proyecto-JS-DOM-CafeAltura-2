@@ -1,2 +1,2 @@
-# Gamma-JS-DOM-CafeAltura-2
-Añadiendo funcionalidad desde JS 
+# Proyecto-Cafe-Final
+Repositorio de proyecto final Cafe de altura

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fade In/Out Example</title>
+<style>
+  div {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  p {
+    opacity: 0;
+    margin-top: 20px;
+  }
+
+  .show {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+</style>
+</head>
+<body>
+<div>
+  <h1>animation-direction: alternate</h1>
+  <button id="toggleButton">Abrir</button>
+  <p>Play the animation forwards first, then backwards:</p>
+</div>
+
+<script>
+
+  const button = document.getElementById("toggleButton");
+  const paragraph = document.querySelector("p");
+
+  button.addEventListener("click", function() {
+    paragraph.classList.toggle("show");
+  });
+
+</script>
+</body>
+</html>
+
+<!-- 
+<button onclick="myFunction()">Try it</button>
+<div id="myDIV">
+  This is a DIV element.
+</div> 
+
+.mystyle {
+  width: 100%;
+  padding: 25px;
+  background-color: coral;
+  color: white;
+  font-size: 25px;
+}
+
+function myFunction() {
+  var element = document.getElementById("myDIV");
+  element.classList.toggle("mystyle");
+}
+-->
