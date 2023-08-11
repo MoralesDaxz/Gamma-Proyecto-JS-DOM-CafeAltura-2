@@ -1,15 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+        <link rel="stylesheet" href="../../style/stylesStore.css">
     <title>Tienda</title>
 </head>
-<body>
-    <h2> Bienvenido </h2>
-    <hr>
-    <h2>Variedad de Productos</h2>
-    <hr>
-    <a href="../../index.html">Inicio</a>
+
+<body id="contenBody">
+    <!--#region - Header - Navbar      "Figma - Hero"-->
+    <header>
+        <a class="boxHeader">
+            <!--Div reemplazado con -->
+            <p>cafedealtura.com</p>
+            <img class="boxImg" src="img/home/Coffe.svg" alt="Logo">
+        </a>
+
+        <div class="wrapHeader">
+            <a>Tienda</a>
+            <a>Suscripción</a>
+            <a>Para empresas</a>
+            <a>Sobre nosotros</a>
+            <a>Contacto</a>
+        </div>
+        <div class="frmHeader">
+            <img class="frmIcon" src="../../img/home/Icon.svg" alt="iconTlf">
+            <p class="frmTlf"> +34 919 49 05 18</p>
+            <a class="frmInicio" >Iniciar sesión<a/>
+        </div>
+        <a  class="carImg">
+            <img src="../../img/home/Carr.svg">
+        </a>
+    </header>
+    <!--#endregion - Header "Figma - Hero"-->
+<main >
+    <section id="content1DivProd" class="contenNew">
+        <h1 class="titleProduct">Nuestros Productos</h1>
+        <div id="content2Products" class="coffeBags">
+
+        </div>
+    </section>
+</main>
+     
+    <!--#region - Footer - Footer      "Figma - Footer"-->
+    <footer class="contenFooter">
+        <div class="contenWrap">
+            <div class="footerLogo">
+                <p>cafedealtura.com</p>
+                <img class="boxImg" src="../../img/home/Coffe.svg" alt="Logo">
+            </div>
+            <section class="boxColumn">
+                <div class="box1Flex">
+                    <article class="flexColumn">
+
+                        <h3 class="footer1H3">Te ayudamos en</h3>
+                        <a href="" class="footerBox1">
+                            <img src="../../img/home/footer-phone.svg" alt="Telefono - Footer">
+                            <p class="footer1Tlf">+34 919 49 05 18</p>
+                        </a>
+                        <a href="landing.html" class="footerBox2">
+                            <img src="../../img/home/footer-email.svg" alt="Correo - Footer">
+                            <p class="footer1Correo">hola@cafedealtura.com</p>
+                        </a>
+                    </article>
+                </div>
+                <div class="subboxFooter">
+                    <div>
+                        <article class="art2Footer">
+                            <a href="#">Tienda</a>
+                            <a href="#">Suscripción</a>
+                            <a href="#">Para empresas</a>
+                            <a href="#">Sobre nosotros</a>
+                            <a href="#">Contacto</a>
+                        </article>
+                    </div>
+                    <div>
+                        <article class="art3Footer">
+                            <a href="#">Política de privacidad</a>
+                            <a href="#">Política de cookies</a>
+                            <a href="#">Términos y condiciones</a>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </footer>
+    <section class="boxCopy">
+        <div>
+            <p class="copyPrf">Todos los derechos reservados - Café de Altura SL - 2022</p>
+        </div>
+    </section>
+    <!--#endregion - x Footer x - "Figma - Footer"-->
+<script src="../../main/tienda.js"></script>
 </body>
 </html>
