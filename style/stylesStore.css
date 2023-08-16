@@ -241,6 +241,7 @@ header
 /* Agotado */
 .bagsBorde_Agotado /* usado */
 {
+    opacity: 0.3;
     width: 282px;
     height: 391.39px;
     border: 1px solid rgba(198, 28, 28,0.3);
@@ -256,7 +257,7 @@ header
     width: fit-content;
     height: 16px;
     text-decoration: none;
-    background: rgba(198, 28, 28,0.8); 
+    background: rgb(198, 28, 28); 
     padding: 8px;
     border-radius: 4px;
     font-weight: 600;

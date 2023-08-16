@@ -222,40 +222,42 @@
                         <div>
                             <label for="name">Nombre completo</label>
                             <div class="marcoInput">
-                                <input name="name" class="formInput1">
+                                <input id='name' name="name" type="text" class="formInput1" required>
                             </div>
                         </div>
                         <div>
                             <label for="email">Email</label>
                             <div class="marcoInput">
-                                <input name="email" class="formInput2">
+                                <input name="email" class="formInput2" required>
                             </div>
                         </div>
                         <div>
                             <label id="labelTlf" for="tlf">Teléfono</label>
                             <div class="boxSelect">
                                 <div class="flexSelector marcoInput">
-                                    <select id="selectForm">
-                                        <option value="ES" title="España +34">ES</option>
-                                        <option value="CO" title="Colombia +57">CO</option>
-                                        <option value="EU" title="Estados Unidos +01">EU</option>
-                                        <option value="VE" title="Venezuela +58">VE</option>
+                                    <select name="codigo" id="selectForm" required>
+                                        <option  value="+34" title="España +34" >ES</option>
+                                        <option  value="+57" title="Colombia +57" >CO</option>
+                                        <option  value="+01" title="Estados Unidos +01" >EU</option>
+                                        <option  value="+58" title="Venezuela +58" >VE</option>
                                     </select>
-                                    <input name="tlf" type="tel" class="formInput3" placeholder="+34-555-987-6543" pattern="+[0-9]{2}-[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                                    required>
+                                                                         
+                                    <input id='codPais' name="tlf1"  class="formInput3_1" value='+34' disabled required>                                      
+                                    <input id='tlf2' name="tlf2" type="number" class="formInput3_2" placeholder="555"  required>                                    
+                                    <input id='tlf3' name="tlf3" type="number" class="formInput3_2" placeholder="987-"  required>                                
+                                    <input id='tlf4' name="tlf4" type="number" class="formInput3_3" placeholder="6543"  required>
                                 </div>
                             </div>
                         </div>
                         <div class="marcoTextarea">
-                            <textarea class="formInput4" cols="30" rows="6"
-                                placeholder="¿En qué podemos ayudarte"></textarea>
+                            <textarea name="area"class="formInput4" cols="30" rows="6"
+                                placeholder="¿En qué podemos ayudarte" required></textarea>
                         </div>
                         <div class="formCheck">
-                            <input type="checkbox" class="colorCheck">
-                            <p class="ltextForm">Acepto la <a href="#">Política de Privacidad</a> y los <a
-                                    href="#">Términos y condiciones.</a></p>
+                            <input id='check' type="checkbox" class="colorCheck">
+                            <p class="ltextForm">Acepto la <a>Política de Privacidad</a> y los <a>Términos y condiciones.</a></p>
                         </div>
-                        <input class="enviarForm" type="submit" value="Enviar">
+                        <input id='submit' class="enviarForm" type="submit" value="Enviar">
                     </form>
                 </article>
             </div>
@@ -287,11 +289,11 @@
                 <div class="subboxFooter">
                     <div>
                         <article class="art2Footer">
-                            <a href="#">Tienda</a>
-                            <a href="#">Suscripción</a>
-                            <a href="#">Para empresas</a>
-                            <a href="#">Sobre nosotros</a>
-                            <a href="#">Contacto</a>
+                            <a>Tienda</a>
+                            <a>Suscripción</a>
+                            <a>Para empresas</a>
+                            <a>Sobre nosotros</a>
+                            <a>Contacto</a>
                         </article>
                     </div>
                     <div>
