@@ -37,7 +37,6 @@ let sec1Btn2 = document.getElementById("mainLink2");
 let artImagenes = mainArticle[3];
 let artSec3 = mainSec3Wrap.querySelector("article");
 let artTagAtienda = mainTagSection[2].querySelector("a");
-
 //Main - section4
 let articlesSection4 = mainTagSection[3].getElementsByTagName("article");
 let art1Section4 = articlesSection4[0];
@@ -86,11 +85,13 @@ let aFtPoliCook = tagAfooter[9];
 let aFtTerminos = tagAfooter[10];
 
  function carritoNew(param) {
-  
+
 if (localStorage.getItem("cafe") != null) {
+divCarrito.innerHTML=''
   for (const i of param) {
 
     i.forEach((x) => {
+
       let contentDiv = document.createElement("div");
       let div1 = document.createElement("div");
       let div2 = document.createElement("div");
@@ -116,22 +117,19 @@ if (localStorage.getItem("cafe") != null) {
       div2.appendChild(pName);
       div2.appendChild(pPrecio);
       div2.appendChild(btnNo);
-      
     });
-
   }
 } else {
   aHDCarro.addEventListener("click", () => {
     alert(`Carrito vacio - Realiza un compra`);
   });
 }
-return param
 }
 carritoNew(carritoLS)
 
+
 //Ev. Listen -> boton compra
 aHDCarro.addEventListener("click", () => {
-
   if (divCarrito.classList.contains("hidden")) {
     divCarrito.classList.remove("hidden");
   } else {
@@ -255,12 +253,12 @@ const iniciarApi = async () => {
           });
         }
       }
-      a.addEventListener("click", () => {
+      a.addEventListener("click", (event)=> {
         let idEvent = event.target.id;
         const result = products.filter((i) => i._id === idEvent);
         compra.unshift(result);
         localStorage.setItem("cafe", JSON.stringify(compra));
-        
+       carritoNew(compra)
 //-----
         /* 
             let contentDiv = document.createElement("div");
