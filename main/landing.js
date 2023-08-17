@@ -7,12 +7,12 @@ let compra = []; //Alm. de compras / LS cafe | [{},{},{}]
 let divCarrito = document.createElement("div");
 divCarrito.id = "carrito";
 body.appendChild(divCarrito);
-let carritoLS = JSON.parse(localStorage.getItem("cafe"));
+let compraLS = JSON.parse(localStorage.getItem("cafe"));
+
 //Globales
 let headerTagA = header.getElementsByTagName("a");
 let mainTagSection = main.getElementsByTagName("section");
 let mainArticle = main.getElementsByTagName("article");
-
 //header
 let aHDLogo = headerTagA[0];
 let aHDTienda = headerTagA[1];
@@ -23,6 +23,8 @@ let aHDContacto = headerTagA[5];
 let aHDTlf = headerTagA[6];
 let aHDInicio = headerTagA[7];
 let aHDCarro = headerTagA[10];
+let imgCar = document.getElementById("car-img");
+
 //Main - section1
 let mainSec1 = mainTagSection[0];
 let mainSec2Card = mainTagSection[1];
@@ -83,54 +85,17 @@ let aFtcontacto = tagAfooter[7];
 let aFtPoliPriv = tagAfooter[8];
 let aFtPoliCook = tagAfooter[9];
 let aFtTerminos = tagAfooter[10];
-
- function carritoNew(param) {
-
-if (localStorage.getItem("cafe") != null) {
-divCarrito.innerHTML=''
-  for (const i of param) {
-
-    i.forEach((x) => {
-
-      let contentDiv = document.createElement("div");
-      let div1 = document.createElement("div");
-      let div2 = document.createElement("div");
-      let pUnd = document.createElement("p");
-      let pName = document.createElement("p");
-      let pPrecio = document.createElement("p");
-      let btnNo = document.createElement("button");
-
-      pUnd.innerText = `1`;
-      pName.innerText = `${x.brand}`;
-      let a = pUnd.innerText * x.price;
-      pPrecio.innerText = `${a},00€`;
-      btnNo.innerText = `Retirar`;
-      div1.style = `width:90px;height:110pxpx;background-image: url('${x.img_url}');background-repeat: no-repeat;background-size: cover;`;
-      div2.style = `width:140px;display:flex;flex-direction:column;gap:5px;height:auto;`;
-
-      contentDiv.style = `border-bottom:solid black 2px;display:flex;flex-direction:row;gap:10px;height:110px`;
-      btnNo.style = `width:50px;border-color:rgb(196, 33, 33);text-align:center;font-size:12px;background-color:rgb(163, 27, 27); color:white; border-radius:5px;cursor:pointer`;
-      divCarrito.appendChild(contentDiv);
-      contentDiv.appendChild(div1);
-      contentDiv.appendChild(div2);
-      div2.appendChild(pUnd);
-      div2.appendChild(pName);
-      div2.appendChild(pPrecio);
-      div2.appendChild(btnNo);
-    });
-  }
-} else {
-  aHDCarro.addEventListener("click", () => {
-    alert(`Carrito vacio - Realiza un compra`);
-  });
-}
-}
-carritoNew(carritoLS)
-
+//Limpiar LS al cerrar o refrescar pagina
+window.addEventListener("beforeunload", function () {
+  localStorage.clear();
+});
 
 //Ev. Listen -> boton compra
 aHDCarro.addEventListener("click", () => {
-  if (divCarrito.classList.contains("hidden")) {
+  if (
+    divCarrito.classList.contains("hidden") &&
+    localStorage.getItem("cafe") != null
+  ) {
     divCarrito.classList.remove("hidden");
   } else {
     divCarrito.classList.add("hidden");
@@ -147,9 +112,9 @@ function setAttributes(elemento, atrib) {
     elemento.setAttribute(key, atrib[key]);
   }
 }
-
 //FAQ - Parrafos
 let flag = false; //Control FAQ viene con css > .labelPrf - opacity 0
+
 function deployFAQ(param) {
   let getPrf = document.getElementById(`${param}`);
   if (flag) {
@@ -178,7 +143,6 @@ function deployFAQ(param) {
     return (flag = true);
   }
 }
-
 //Evento para flechas FAQ
 art1Arrow1.addEventListener("click", () => {
   if (flag == true) {
@@ -201,6 +165,91 @@ art3Arrow3.addEventListener("click", () => {
     art3Arrow3.style = `transition-property: rotate;transition-duration: .7s; rotate:360deg`;
   }
 });
+
+function carritoNew(param) {
+  if (localStorage.getItem("cafe") != null) {
+    divCarrito.innerHTML = "";
+    let carToStore = document.createElement("div");
+    let tagA = document.createElement('a')
+    let payNow = document.createElement('button');
+    let divSvg = document.createElement('div')
+
+    payNow.innerText = "Pagar";
+    divCarrito.appendChild(carToStore);
+    carToStore.appendChild(tagA);
+    carToStore.appendChild(divSvg);
+    tagA.appendChild(payNow);
+    divSvg.innerHTML=
+   `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-stack-pop" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2b674c" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M7 9.5l-3 1.5l8 4l8 -4l-3 -1.5" />
+      <path d="M4 15l8 4l8 -4" />
+      <path d="M12 11v-7" />
+      <path d="M9 7l3 -3l3 3" />
+    </svg>`
+ 
+    setAttributes(carToStore, { id: 'carDiv1'})
+    setAttributes(divSvg, { id: 'divSvg',title:'Ocultar'})
+    setAttributes(tagA, { href: "../pages/carro/testCarro.html"})
+    setAttributes(payNow, { id:"pay"})
+    setAttributes(imgCar, { src: "../../img/home/Car-ON.png"});
+    divSvg.addEventListener('click',()=>{divCarrito.classList.add("hidden")})
+
+    for (const i of param) {
+      i.forEach((x) => {
+        let contentDiv = document.createElement("div");
+        let div1 = document.createElement("div");
+        let div2 = document.createElement("div");
+        let pUnd = document.createElement("p");
+        let pName = document.createElement("p");
+        let pPrecio = document.createElement("p");
+        //let btnNo = document.createElement("button");
+
+        pUnd.innerText = `1 Unidad`;
+        pName.innerText = `${x.brand}`;
+
+        pPrecio.innerText = `${x.price},00€`;
+        //btnNo.innerText = `Retirar`;
+        //btnNo.id=x._id
+        //divCarrito.style=`display:flex;flex-direction:column; gap:10px`
+        contentDiv.style = `width:340px;margin-top:40px;border-bottom:solid rgb(227,222,215) 1px;display:flex;flex-direction:row;`;
+        div1.style = `height:120px;width:120px;background-image: url('${x.img_url}');background-repeat: no-repeat;background-size: 100%;background-position:center`;
+        div2.style = `height:120px;width:220px;display:flex;flex-direction:column;gap:5px;height:auto;justify-content:center;align-items:start;`;
+        //btnNo.style = `margin:0 auto;;width:50px;border-color:rgb(196, 33, 33);text-align:center;font-size:12px;background-color:rgb(163, 27, 27); color:white; border-radius:5px;cursor:pointer`;
+
+        divCarrito.appendChild(contentDiv);
+        contentDiv.appendChild(div1);
+        contentDiv.appendChild(div2);
+        div2.appendChild(pUnd);
+        div2.appendChild(pName);
+        div2.appendChild(pPrecio);
+        //div2.appendChild(btnNo);
+
+        /* 
+         a.addEventListener("click", (event)=> {
+          let idEvent = event.target.id;
+          const result = products.filter((i) => i._id === idEvent);
+          compra.unshift(result);
+          localStorage.setItem("cafe", JSON.stringify(compra));
+         carritoNew(compra)
+        */
+      });
+      /* btnNo.addEventListener('click',(event)=>{
+        let idEvent = event.target.id;
+        const result = compraLS.filter((i) => i[0]._id !== idEvent);
+        console.log(`compraLS \n`, compraLS);
+        console.log(result);
+       localStorage.setItem("cafe", JSON.stringify(result));
+      }) */
+    }
+  } /*else {
+     aHDCarro.addEventListener("click", () => {
+      alert(`Carrito vacio - Realiza un compra`);
+    });  
+  }*/
+  
+}
+carritoNew(compraLS);
 
 //Iniciar Api
 const iniciarApi = async () => {
@@ -253,50 +302,20 @@ const iniciarApi = async () => {
           });
         }
       }
-      a.addEventListener("click", (event)=> {
+      a.addEventListener("click", (event) => {
         let idEvent = event.target.id;
         const result = products.filter((i) => i._id === idEvent);
         compra.unshift(result);
         localStorage.setItem("cafe", JSON.stringify(compra));
-       carritoNew(compra)
-//-----
-        /* 
-            let contentDiv = document.createElement("div");
-            let div1 = document.createElement("div");
-            let div2 = document.createElement("div");
-            let pUnd = document.createElement("p");
-            let pName = document.createElement("p");
-            let pPrecio = document.createElement("p");
-            let btnNo = document.createElement("button");
-      
-            pUnd.innerText = `1`;
-            pName.innerText = `${x.brand}`;
-            let a = pUnd.innerText * x.price;
-            pPrecio.innerText = `${a},00€`;
-            btnNo.innerText = `Retirar`;
-            div1.style = `width:90px;height:110pxpx;background-image: url('${x.img_url}');background-repeat: no-repeat;background-size: cover;`;
-            div2.style = `width:140px;display:flex;flex-direction:column;gap:5px;height:auto;`;
-      
-            contentDiv.style = `border-bottom:solid black 2px;display:flex;flex-direction:row;gap:10px;height:110px`;
-            btnNo.style = `width:50px;border-color:rgb(196, 33, 33);text-align:center;font-size:12px;background-color:rgb(163, 27, 27); color:white; border-radius:5px;cursor:pointer`;
-            divCarrito.appendChild(contentDiv);
-            contentDiv.appendChild(div1);
-            contentDiv.appendChild(div2);
-            div2.appendChild(pUnd);
-            div2.appendChild(pName);
-            div2.appendChild(pPrecio);
-            div2.appendChild(btnNo); */
-       
-      }); 
-
-    });//END FOR
+        carritoNew(compra);
+        divCarrito.classList.remove("hidden");
+      });
+    }); //END FOR
   }; //END getProducts
-   getProducts();
+  getProducts();
 }; //END iniciarApi()
 
 iniciarApi();
-
-//-------------
 
 //EventListener - Select - habilita los siguientes input telefono
 select.addEventListener("click", () => {
@@ -370,7 +389,6 @@ form.addEventListener("submit", (event) => {
     };
     usuarios.unshift(user);
     localStorage.setItem("formulario", JSON.stringify(usuarios));
-
     registered();
   }
 });
@@ -423,45 +441,3 @@ setAttributes(aFtPoliPriv, {
 });
 setAttributes(aFtPoliCook, { href: "../../pages/cookies/testCookies.html" });
 setAttributes(aFtTerminos, { href: "../../pages/terminos/testTerminos.html" });
-
-
-
-//Intento de tags a para push actualizando div carrito
-   /*
-  const getTags = async () =>{
-    let tagAart1Sec3 = artSec3.querySelectorAll("a"); //Tags de wraps *4
-    console.log(tagAart1Sec3);
-
-   tagAart1Sec3[0].addEventListener("click", () => {
-    let idEvent = event.target.id;
-    const result = products.filter((i) => i._id === idEvent);
-    compra.unshift(result);
-    localStorage.setItem("cafe", JSON.stringify(compra));
-   
-    })
-    tagAart1Sec3[1].addEventListener("click", () => {
-      let idEvent = event.target.id;
-      const result = products.filter((i) => i._id === idEvent);
-      compra.unshift(result);
-      localStorage.setItem("cafe", JSON.stringify(compra));
-     
-      })
-  }
-  getTags() */
-//----------------------------------------------------
-  /* const arrayTagA = new Array(tagAart1Sec3);
-
-for (let i = 0; i < arrayTagA.length; i++) {
-  const element = arrayTagA[i];
-  console.log(element);
-} */
-//tagAart1Sec3
-
-/*  a.addEventListener('click',()=>{
-       
-        let idEvent = event.target.id 
-        const result = products.filter(i =>i._id === idEvent)
-        compra.unshift(result)
-        localStorage.setItem('cafe', JSON.stringify(compra));
-        
-      });  */

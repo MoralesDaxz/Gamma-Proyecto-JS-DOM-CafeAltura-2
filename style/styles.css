@@ -56,17 +56,51 @@ body
 .hidden {
     display: none;
   }
-#carrito
+
+
+#carrito /* carrito */
 {
     position: fixed;
     top: 90px;
     right:4px;
-    height: auto;
-    background-color: rgba(230, 229, 229, 0.5);
+    background-color: rgba(230, 229, 229, 0.7);
     z-index: 1000;
     border-radius: 3px;
     gap: 2%;
+    overflow-y:scroll;
+    height:480px;
+    
 }
+#carDiv1{
+    width: 300px;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    position: fixed;
+    
+}
+#pay/* Boton de pago -> */
+{
+    margin: 5px auto auto 2%;
+    border-color: rgb(156, 197, 178);
+    background-color: rgb(78, 140, 112);
+    color:white;
+    width:200px;
+    height:30px;
+    font-size: 20px;
+    font-family: "Outfit";
+    border-radius: 7px;
+    text-align: center;
+    cursor:pointer;
+}
+#pay:hover{
+    background-color: rgb(43, 103, 76);
+    background-color: #2b674c;
+}
+#divSvg{
+    cursor:pointer;
+}
+
 #contenBody
 {
     min-width: 1280px; /**********/
