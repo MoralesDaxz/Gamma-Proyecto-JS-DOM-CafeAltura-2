@@ -247,8 +247,7 @@ const iniciarApi = async () => {
   const filterUnAvailable = promiseA.products.filter(
         (n) => n.available == false
   );
-console.log(filterAvailable);
-console.log(filterUnAvailable);
+
 
   const orderAvailable = filterAvailable.sort((a, b) => a.price - b.price); // disponible ordenado de menor a mayor por precio
   const orderUnAvailable = filterUnAvailable.sort((a, b) => a.price - b.price); // agotado ordenado de menor a mayor por precio
