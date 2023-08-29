@@ -250,7 +250,7 @@ header
     flex-direction: column; 
     align-items: center; 
     padding-top: 24px;
-    cursor:none
+    
 }
 .bagsLink_Agotado /* usado */
 { 
@@ -264,7 +264,7 @@ header
     font-size: 14px;
     line-height: 16px;
     color: #FFFFFF;
-    
+    cursor:default;
 }
 .bagsHover_Agotado:hover
 {   

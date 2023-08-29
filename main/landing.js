@@ -89,8 +89,17 @@ let aFtTerminos = tagAfooter[10];
 window.addEventListener("beforeunload", function () {
   localStorage.clear();
 });
-
-//Ev. Listen -> boton compra
+//Funcion de refrescar pagina
+function reload() {
+  location.reload();
+}
+//Funcion asignar atributos
+function setAttributes(elemento, atrib) {
+  for (const key in atrib) {
+    elemento.setAttribute(key, atrib[key]);
+  }
+}
+//Ev. Listen -> Nav -> imagen -> Compra
 aHDCarro.addEventListener("click", () => {
   if (
     divCarrito.classList.contains("hidden") &&
@@ -102,67 +111,44 @@ aHDCarro.addEventListener("click", () => {
   }
 });
 
-//Funcion de refrescar pagina
-function reload() {
-  location.reload();
-}
-//Funcion asignar atributos
-function setAttributes(elemento, atrib) {
-  for (const key in atrib) {
-    elemento.setAttribute(key, atrib[key]);
-  }
-}
-//FAQ - Parrafos
-let flag = false; //Control FAQ viene con css > .labelPrf - opacity 0
-
-function deployFAQ(param) {
-  let getPrf = document.getElementById(`${param}`);
-  if (flag) {
-    getPrf.style = `transition-property: height, opacity;
-    transition-duration: 0.5s;
-    transition-timing-function: ease-in-out;
-    height:0px;
-    opacity: 0;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 16px;
-    color: #2B2A2B;`;
-    return (flag = false);
-  } else {
-    getPrf.style = `transition-property: height, opacity;
-    transition-duration: 0.6s;
-    transition-timing-function: ease-in-out;
-    height:40px;
-    opacity: 1;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 16px;
-    color: #2B2A2B`;
-    return (flag = true);
-  }
-}
-//Evento para flechas FAQ
+//FAQ -> Parrafos
+//Evento -> flechas FAQ
 art1Arrow1.addEventListener("click", () => {
-  if (flag == true) {
+  let getPrf = document.getElementById('p1FAQ');
+  if (getPrf.classList.contains('labelPrf')) {
+    getPrf.classList.remove('labelPrf')
+    getPrf.classList.add('labelPrfActivo')
     art1Arrow1.style = `transition-property: rotate;transition-duration: .7s; rotate:180deg`;
-  } else {
+    
+  } else if(getPrf.classList.contains('labelPrfActivo')) { //abajo
+    getPrf.classList.remove('labelPrfActivo')
+    getPrf.classList.add('labelPrf')
     art1Arrow1.style = `transition-property: rotate;transition-duration: .7s; rotate:360deg`;
   }
 });
 art2Arrow2.addEventListener("click", () => {
-  if (flag == true) {
+  let getPrf = document.getElementById('p2FAQ');
+  if (getPrf.classList.contains('labelPrf')) {
+    getPrf.classList.remove('labelPrf')
+    getPrf.classList.add('labelPrfActivo')
     art2Arrow2.style = `transition-property: rotate;transition-duration: .7s; rotate:180deg`;
-  } else {
+  } else if(getPrf.classList.contains('labelPrfActivo')) { //abajo
+    getPrf.classList.remove('labelPrfActivo')
+    getPrf.classList.add('labelPrf')
     art2Arrow2.style = `transition-property: rotate;transition-duration: .7s; rotate:360deg`;
   }
 });
 art3Arrow3.addEventListener("click", () => {
-  if (flag == true) {
+  let getPrf = document.getElementById('p3FAQ');
+  if (getPrf.classList.contains('labelPrf')) {
+    getPrf.classList.remove('labelPrf')
+    getPrf.classList.add('labelPrfActivo')
     art3Arrow3.style = `transition-property: rotate;transition-duration: .7s; rotate:180deg`;
-  } else {
-    art3Arrow3.style = `transition-property: rotate;transition-duration: .7s; rotate:360deg`;
+    
+  } else if(getPrf.classList.contains('labelPrfActivo')) { //abajo
+    getPrf.classList.remove('labelPrfActivo')
+    getPrf.classList.add('labelPrf')
+    art3Arrow3.style = `transition-property: rotate;transition-duration: .7s; rotate:360deg`;   
   }
 });
 
@@ -180,7 +166,7 @@ function carritoNew(param) {
     carToStore.appendChild(divSvg);
     tagA.appendChild(payNow);
     divSvg.innerHTML=
-   `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-stack-pop" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2b674c" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-stack-pop" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2b674c" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <path d="M7 9.5l-3 1.5l8 4l8 -4l-3 -1.5" />
       <path d="M4 15l8 4l8 -4" />
@@ -193,6 +179,7 @@ function carritoNew(param) {
     setAttributes(tagA, { href: "../pages/carro/testCarro.html"})
     setAttributes(payNow, { id:"pay"})
     setAttributes(imgCar, { src: "../../img/home/Car-ON.png"});
+
     divSvg.addEventListener('click',()=>{divCarrito.classList.add("hidden")})
 
     for (const i of param) {
@@ -248,7 +235,7 @@ function carritoNew(param) {
     });  
   }*/
   
-}
+}//END carrtoNew
 carritoNew(compraLS);
 
 //Iniciar Api
@@ -258,8 +245,10 @@ const iniciarApi = async () => {
 
   const filterAvailable = promiseA.products.filter((n) => n.available);
   const filterUnAvailable = promiseA.products.filter(
-    (n) => n.available == false
+        (n) => n.available == false
   );
+console.log(filterAvailable);
+console.log(filterUnAvailable);
 
   const orderAvailable = filterAvailable.sort((a, b) => a.price - b.price); // disponible ordenado de menor a mayor por precio
   const orderUnAvailable = filterUnAvailable.sort((a, b) => a.price - b.price); // agotado ordenado de menor a mayor por precio
@@ -295,6 +284,7 @@ const iniciarApi = async () => {
           pName.innerText = elemento.brand;
           pPrice.innerText = `${elemento.price},00 €`;
           a.innerText = `Agotado`;
+          a.disabled=true;
           setAttributes(div, { class: `bagsHover_Agotado bagsBorde_Agotado` });
           setAttributes(a, {
             class: "bagsLink_Agotado",

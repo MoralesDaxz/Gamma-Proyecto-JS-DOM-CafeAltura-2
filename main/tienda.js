@@ -69,7 +69,7 @@ const iniciarApi = async () => {
         pName.innerText = elemento.brand;
         pPrice.innerText = `${elemento.price},00 €`;
         a.innerText = `Añadir`;
-
+        a.disabled=true;
         setAttributes(div, { class: `bagsHover bagsBorde` });
         setAttributes(img, { src: `${urlImg}`, class: "bagsImg" });
         setAttributes(pName, { class: "bags1Prf" });
