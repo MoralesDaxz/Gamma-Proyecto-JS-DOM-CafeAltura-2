@@ -13,6 +13,7 @@ let aHDContacto = headerTagA[5];
 let aHDTlf = headerTagA[6];
 let aHDInicio = headerTagA[7];
 let aHDCarro = headerTagA[10];
+let imgCar=aHDCarro.children[0];
 //main - section - div contentProducts
 let secDivProducts = document.getElementById("content1DivProd");
 let divProducts = document.getElementById("content2Products");
@@ -51,6 +52,11 @@ function setAttributes(elemento, atrib) {
   for (const key in atrib) {
     elemento.setAttribute(key, atrib[key]);
   }
+}
+
+if (localStorage.getItem("cafe") != null) {
+  imgCar.removeAttribute('src')
+  setAttributes(imgCar, { src: "../../img/home/Car-ON.png"});
 }
 
 //Iniciar Api
@@ -101,7 +107,6 @@ const iniciarApi = async () => {
       }
     });
 
-    console.log(promiseA);
   }; //END getProducts
 
   getProducts();

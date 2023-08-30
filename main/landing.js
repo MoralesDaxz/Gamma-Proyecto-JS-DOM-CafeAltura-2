@@ -9,6 +9,7 @@ let divCarrito = document.createElement("div");
 divCarrito.id = "carrito";
 body.appendChild(divCarrito);
 let compraLS = JSON.parse(localStorage.getItem("cafe"));
+let getLS = JSON.parse(localStorage.getItem("cafe"));
 
 
 
@@ -99,17 +100,19 @@ let userInvitado = localStorage.getItem("user")
 /* window.addEventListener("beforeunload", function () {
   localStorage.clear();
 }); */
+
+
 //Funcion de refrescar pagina
-/* function reload() {
+ function reload() {
   location.reload();
-} */
-//Funcion asignar atributos
+} 
 
 
 if (localStorage.getItem('user')){//valueOf('invitado')
   headerTagA[7].textContent=`Bienvenido`}
 else{headerTagA[7].textContent=`Iniciar sesion`}
 
+//Funcion asignar atributos
 function setAttributes(elemento, atrib) {
   for (const key in atrib) {
     elemento.setAttribute(key, atrib[key]);
@@ -327,11 +330,17 @@ const iniciarApi = async () => {
           });
         }
       }
+      
       a.addEventListener("click", (event) => { //aclick
+       
         let idEvent = event.target.id;
         let result = products.filter((i) => i._id === idEvent);
         compra.unshift(result);
         localStorage.setItem("cafe", JSON.stringify(compra));
+         /*  getLS =[...getLS] */
+          compra = [...compra]
+          /* compra.concat(getLS) */
+        
         carritoNew(compra);
         divCarrito.classList.remove("hidden");
       });
@@ -358,7 +367,7 @@ let codigoP = select.addEventListener("change", () => {
 //Form - Registro exitoso
 const registered = () => {
   form.style = `display:none`;
-  hReg1.innerText = `Hola ${inName.value} pronto te leeremos!`;
+  hReg1.innerText = `Hola ${inName.value} pronto te contactaremos!`;
   hReg2.innerText = `Gracias por registrarte!`;
   divReg.classList = "divNewReg";
   btnReg.classList = "btnNewReg";
@@ -400,9 +409,11 @@ form.addEventListener("submit", (event) => {
       inCheck.checked = true;
       usuarios.unshift(user);
       localStorage.setItem("formulario", JSON.stringify(usuarios));
-      registered();
+      setTimeout(() => {
+        registered();
+      }, 1000);
     } else {
-      confirm((text = `Datos no registrados, quieres seguir?`));
+      confirm((text = `Datos no registrados, seguir en formulario?`));
     }
   } else {
     const user = {
@@ -414,7 +425,9 @@ form.addEventListener("submit", (event) => {
     };
     usuarios.unshift(user);
     localStorage.setItem("formulario", JSON.stringify(usuarios));
-    registered();
+    setTimeout(() => {
+        registered();
+      }, 1000);
   }
 });
 

@@ -140,6 +140,7 @@ header
 {
     width: 24px; height: 24px;
     margin: 20px 0px 20px 78.05px;
+    src: url('');
 }
 /* #endregion - Header - Figma "Hero" */
 /* #region - Main - Store */
