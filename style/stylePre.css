@@ -59,7 +59,7 @@ body
     justify-content: center;
     align-items: center;
     background-color: rgb(230, 230, 230);
-   
+    font-family:"Outfit";
 }
 #contenMain
 {
@@ -136,6 +136,13 @@ input
     border:none;
     cursor: pointer;
 }
+.regisBut:hover
+{
+    background-color: rgba(235, 129, 42,0.9 );
+    transition-property: background-color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+}
 
 .back2
 {
@@ -168,15 +175,226 @@ input
     justify-content: center;
     color:#ffffff;
     font-family:"Outfit";
-    font-size: 0.8rem; 
     padding: 5%;
     border-radius: 2px;
     height: 1.5rem  ;
     width:100%;
 }
+.a0
+{
+    background-color: rgb(40, 167, 78);
+    transition-property: background-color;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+    cursor: pointer;
+    font-size: 0.8rem; 
+}
+.a0:hover
+{
+    background-color: rgba(40, 167, 78,0.5);
+    transition-property: background-color;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+   
+}
+.a0Activo
+{
+    font-size: 1.1rem;
+    background-color: rgb(3, 180, 56);
+    transition-property: font-size, background-color;
+    transition-duration: 0.7s;
+    transition-timing-function: ease-in-out;
+    cursor: none;
+
+}
+
 .a1
-{background-color: rgb(59, 89, 153);}
+{background-color: rgb(59, 89, 153);font-size: 0.8rem; 
+    transition-property: background-color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;}
+.a1:hover
+{background-color: rgb(59, 89, 153,0.5);
+    transition-property: background-color;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;}
+    
 .a2
-{background-color: rgb(28, 181, 178);}
+{background-color: rgb(28, 181, 178);font-size: 0.8rem; 
+    transition-property: background-color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;}
+.a2:hover
+{background-color: rgba(28, 181, 178,0.5);font-size: 0.8rem; 
+    transition-property: background-color;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;}
 .a3
-{background-color:rgb(227,65,51);}
+{background-color:rgb(227,65,51);font-size: 0.8rem; 
+    transition-property: background-color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;}
+.a3:hover
+{background-color:rgba(227,65,51,0.5);
+    transition-property: background-color;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;}
+.spinner{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    position: fixed;
+    z-index: 1001;
+    width: 50px;
+    height: 50px;
+    
+
+}
+ .spinnerActivo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 1001;
+    width: 50px;
+    height: 50px;
+ 
+} 
+
+
+.wrapper {
+    margin-top: 40px;
+    width: 150px;
+    height: 60px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .circle {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: #fff;
+    left: 15%;
+    transform-origin: 50%;
+    animation: circle7124 .5s alternate infinite ease;
+  }
+  
+  @keyframes circle7124 {
+    0% {
+      top: 60px;
+      height: 5px;
+      border-radius: 50px 50px 25px 25px;
+      transform: scaleX(1.7);
+    }
+  
+    40% {
+      height: 20px;
+      border-radius: 50%;
+      transform: scaleX(1);
+    }
+  
+    100% {
+      top: 0%;
+    }
+  }
+  
+  .circle:nth-child(2) {
+    left: 45%;
+    animation-delay: .2s;
+  }
+  
+  .circle:nth-child(3) {
+    left: auto;
+    right: 15%;
+    animation-delay: .3s;
+  }
+  
+  .shadow {
+    width: 20px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.9);
+    position: absolute;
+    top: 62px;
+    transform-origin: 50%;
+    z-index: -1;
+    left: 15%;
+    filter: blur(1px);
+    animation: shadow046 .5s alternate infinite ease;
+  }
+  
+  @keyframes shadow046 {
+    0% {
+      transform: scaleX(1.5);
+    }
+  
+    40% {
+      transform: scaleX(1);
+      opacity: .7;
+    }
+  
+    100% {
+      transform: scaleX(.2);
+      opacity: .4;
+    }
+  }
+  
+  .shadow:nth-child(4) {
+    left: 45%;
+    animation-delay: .2s
+  }
+  
+  .shadow:nth-child(5) {
+    left: auto;
+    right: 15%;
+    animation-delay: .3s;
+  }
+  
+
+
+/* 
+#outline {
+    stroke-dasharray: 2.42777px, 242.77666px;
+    stroke-dashoffset: 0;
+    -webkit-animation: anim 1.6s linear infinite;
+    animation: anim 1.6s linear infinite;
+  }
+  
+  @-webkit-keyframes anim {
+    12.5% {
+      stroke-dasharray: 33.98873px, 242.77666px;
+      stroke-dashoffset: -26.70543px;
+    }
+  
+    43.75% {
+      stroke-dasharray: 84.97183px, 242.77666px;
+      stroke-dashoffset: -84.97183px;
+    }
+  
+    100% {
+      stroke-dasharray: 2.42777px, 242.77666px;
+      stroke-dashoffset: -240.34889px;
+    }
+  }
+  
+  @keyframes anim {
+    12.5% {
+      stroke-dasharray: 33.98873px, 242.77666px;
+      stroke-dashoffset: -26.70543px;
+    }
+  
+    43.75% {
+      stroke-dasharray: 84.97183px, 242.77666px;
+      stroke-dashoffset: -84.97183px;
+    }
+  
+    100% {
+      stroke-dasharray: 2.42777px, 242.77666px;
+      stroke-dashoffset: -240.34889px;
+    }
+  }
+   */

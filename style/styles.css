@@ -177,7 +177,6 @@ header
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 24px;
     margin: 12px auto 12px auto;   
     background-color: #515051;
     border-radius: 4px;
@@ -256,9 +255,11 @@ header
     align-items: center;
     background-color: #1F1815;
     border-radius: 4px;
-    padding: 12px 24px;
+    padding: 0px;
     width: 168px;
     height: 40px;
+    font-size: 14px;
+    font-weight: 600;
 }
 #mainLink2
 {
@@ -268,9 +269,11 @@ header
     align-items: center;
     background-color: #2A5B45;
     border-radius: 4px;
-    padding: 12px 24px;
+    padding: 0px;
     width: 137px;
     height: 40px;
+    font-size: 14px;
+    font-weight: 600;
     margin-left: 16px;
 }
 #mainImg
@@ -542,10 +545,10 @@ header
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    cursor: pointer;
 }
 .labelH
 {
-    
     font-weight: 600;
     font-size: 18px;
     line-height: 24px;
@@ -560,12 +563,13 @@ header
     transition-duration: 0.6s;
     transition-timing-function: ease-in-out;
     opacity: 0;
-    height: 0;
+    height: 0px;
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 16px;
-    color: #2B2A2B
+    color: #2B2A2B;
+    
 }
 .labelPrfActivo{
     transition-property: height, opacity;
@@ -577,14 +581,25 @@ header
     font-weight: 400;
     font-size: 12px;
     line-height: 16px;
-    color: #2B2A2B
+    color: #2B2A2B;
+}
+.lineFaqActivo
+{
+    transition-property: height, opacity;
+    transition-duration: 0.4s;
+    transition-timing-function: ease-in-out;
+    background-color: #E3DED7;
+    width: 100%;
+    height: 1px;
 }
 
 .lineFaq
 {
-    background-color: #E3DED7;
-    width: 100%;
-    height: 1px;
+    transition-property: height, opacity;
+    transition-duration: 0.4s;
+    transition-timing-function: ease-in-out;
+    margin: 0;
+    height: 0px;
 }
 .labelBott
 {

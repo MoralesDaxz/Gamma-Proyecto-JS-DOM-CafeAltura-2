@@ -31,6 +31,16 @@ let aFtPoliPriv = tagAfooter[8];
 let aFtPoliCook = tagAfooter[9];
 let aFtTerminos = tagAfooter[10];
 
+if (localStorage.getItem('user')){//valueOf('invitado')
+  headerTagA[7].textContent=`Bienvenido`}
+else{headerTagA[7].textContent=`Iniciar sesion`}
+
+function setAttributes(elemento, atrib) {
+  for (const key in atrib) {
+    elemento.setAttribute(key, atrib[key]);
+  }
+} 
+
 //Funcion de refrescar pagina
 function reload() {
   location.reload();

@@ -3,11 +3,14 @@ let body = document.getElementById("contenBody");
 let header = document.querySelector("header");
 let main = document.getElementById("contenMain");
 let usuarios = []; //Alm. de user creados apartir del formulario
+
 let compra = []; //Alm. de compras / LS cafe | [{},{},{}]
 let divCarrito = document.createElement("div");
 divCarrito.id = "carrito";
 body.appendChild(divCarrito);
 let compraLS = JSON.parse(localStorage.getItem("cafe"));
+
+
 
 //Globales
 let headerTagA = header.getElementsByTagName("a");
@@ -22,7 +25,7 @@ let aHDNosotros = headerTagA[4];
 let aHDContacto = headerTagA[5];
 let aHDTlf = headerTagA[6];
 let aHDInicio = headerTagA[7];
-let aHDCarro = headerTagA[10];
+let aHDCarro = headerTagA[8];
 let imgCar = document.getElementById("car-img");
 
 //Main - section1
@@ -45,10 +48,14 @@ let art1Section4 = articlesSection4[0];
 let art2Section4 = articlesSection4[1];
 let art3Section4 = articlesSection4[2];
 //Main - section4 - desplegables FAQ
+let divAction1=document.getElementById('boxH3_1') 
+let divAction2=document.getElementById('boxH3_2')
+let divAction3=document.getElementById('boxH3_3')
 let art1Arrow1 = art1Section4.querySelector("img");
 let art2Arrow2 = art2Section4.querySelector("img");
 let art3Arrow3 = art3Section4.querySelector("img");
 let section4TagA = mainTagSection[3].querySelector("a");
+
 //Main - section5
 let sec5TagA = mainTagSection[4].querySelector("a");
 //Main - section6
@@ -85,67 +92,95 @@ let aFtcontacto = tagAfooter[7];
 let aFtPoliPriv = tagAfooter[8];
 let aFtPoliCook = tagAfooter[9];
 let aFtTerminos = tagAfooter[10];
+
+let userInvitado = localStorage.getItem("user")
+
 //Limpiar LS al cerrar o refrescar pagina
-window.addEventListener("beforeunload", function () {
+/* window.addEventListener("beforeunload", function () {
   localStorage.clear();
-});
+}); */
 //Funcion de refrescar pagina
-function reload() {
+/* function reload() {
   location.reload();
-}
+} */
 //Funcion asignar atributos
+
+
+if (localStorage.getItem('user')){//valueOf('invitado')
+  headerTagA[7].textContent=`Bienvenido`}
+else{headerTagA[7].textContent=`Iniciar sesion`}
+
 function setAttributes(elemento, atrib) {
   for (const key in atrib) {
     elemento.setAttribute(key, atrib[key]);
   }
-}
+} 
+
 //Ev. Listen -> Nav -> imagen -> Compra
-aHDCarro.addEventListener("click", () => {
+ aHDCarro.addEventListener("click", () => {
   if (
     divCarrito.classList.contains("hidden") &&
-    localStorage.getItem("cafe") != null
+    localStorage.getItem("cafe") !== null
   ) {
     divCarrito.classList.remove("hidden");
   } else {
     divCarrito.classList.add("hidden");
   }
 });
-
+ 
 //FAQ -> Parrafos
 //Evento -> flechas FAQ
-art1Arrow1.addEventListener("click", () => {
+divAction1.addEventListener("click", () => {
   let getPrf = document.getElementById('p1FAQ');
+  let divLine1 = document.getElementById('lineFaq1'); 
+  
+
   if (getPrf.classList.contains('labelPrf')) {
+    divLine1.classList.remove('lineFaq')
+    divLine1.classList.add('lineFaqActivo')
     getPrf.classList.remove('labelPrf')
     getPrf.classList.add('labelPrfActivo')
     art1Arrow1.style = `transition-property: rotate;transition-duration: .7s; rotate:180deg`;
     
   } else if(getPrf.classList.contains('labelPrfActivo')) { //abajo
+    divLine1.classList.add('lineFaq')
+    divLine1.classList.remove('lineFaqActivo')
     getPrf.classList.remove('labelPrfActivo')
     getPrf.classList.add('labelPrf')
     art1Arrow1.style = `transition-property: rotate;transition-duration: .7s; rotate:360deg`;
   }
 });
-art2Arrow2.addEventListener("click", () => {
+divAction2.addEventListener("click", () => {
   let getPrf = document.getElementById('p2FAQ');
+  let divLine2 = document.getElementById('lineFaq2'); 
+ 
   if (getPrf.classList.contains('labelPrf')) {
+    divLine2.classList.remove('lineFaq')
+    divLine2.classList.add('lineFaqActivo')
     getPrf.classList.remove('labelPrf')
     getPrf.classList.add('labelPrfActivo')
     art2Arrow2.style = `transition-property: rotate;transition-duration: .7s; rotate:180deg`;
   } else if(getPrf.classList.contains('labelPrfActivo')) { //abajo
+    divLine2.classList.add('lineFaq')
+    divLine2.classList.remove('lineFaqActivo')
     getPrf.classList.remove('labelPrfActivo')
     getPrf.classList.add('labelPrf')
     art2Arrow2.style = `transition-property: rotate;transition-duration: .7s; rotate:360deg`;
   }
 });
-art3Arrow3.addEventListener("click", () => {
+divAction3.addEventListener("click", () => {
   let getPrf = document.getElementById('p3FAQ');
+  let divLine3 = document.getElementById('lineFaq3'); 
   if (getPrf.classList.contains('labelPrf')) {
+    divLine3.classList.remove('lineFaq')
+    divLine3.classList.add('lineFaqActivo')
     getPrf.classList.remove('labelPrf')
     getPrf.classList.add('labelPrfActivo')
     art3Arrow3.style = `transition-property: rotate;transition-duration: .7s; rotate:180deg`;
     
   } else if(getPrf.classList.contains('labelPrfActivo')) { //abajo
+    divLine3.classList.add('lineFaq')
+    divLine3.classList.remove('lineFaqActivo')
     getPrf.classList.remove('labelPrfActivo')
     getPrf.classList.add('labelPrf')
     art3Arrow3.style = `transition-property: rotate;transition-duration: .7s; rotate:360deg`;   
@@ -153,6 +188,7 @@ art3Arrow3.addEventListener("click", () => {
 });
 
 function carritoNew(param) {
+  
   if (localStorage.getItem("cafe") != null) {
     divCarrito.innerHTML = "";
     let carToStore = document.createElement("div");
@@ -166,7 +202,7 @@ function carritoNew(param) {
     carToStore.appendChild(divSvg);
     tagA.appendChild(payNow);
     divSvg.innerHTML=
-   `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-stack-pop" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2b674c" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-stack-pop" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2b674c" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <path d="M7 9.5l-3 1.5l8 4l8 -4l-3 -1.5" />
       <path d="M4 15l8 4l8 -4" />
@@ -291,12 +327,12 @@ const iniciarApi = async () => {
           });
         }
       }
-      a.addEventListener("click", (event) => {
+      a.addEventListener("click", (event) => { //aclick
         let idEvent = event.target.id;
-        const result = products.filter((i) => i._id === idEvent);
+        let result = products.filter((i) => i._id === idEvent);
         compra.unshift(result);
         localStorage.setItem("cafe", JSON.stringify(compra));
-        carritoNew(compra);
+        carritoNew(compraLS);
         divCarrito.classList.remove("hidden");
       });
     }); //END FOR
@@ -374,7 +410,7 @@ form.addEventListener("submit", (event) => {
       mail: mailInput,
       tlfCodigo: inputCodigo.value,
       telefonoCompleto: `${tlfField1}${tlfField2}${tlfField3}${tlfField4}`,
-      textArea: event.target.area.value,
+      textArea: event.target.area.value
     };
     usuarios.unshift(user);
     localStorage.setItem("formulario", JSON.stringify(usuarios));

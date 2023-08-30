@@ -13,6 +13,9 @@
     <title>Login</title>
 </head>
 <body>
+
+   
+
     <div id="contenMain">
     <section class="contenSection back1">
         <div>
@@ -30,12 +33,35 @@
         <div>
             <h2 class="title2">Iniciar Sesión</h2>
         </div>
+        <div id="svgSpinner" class="spinner">
+   <div class="wrapper">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="shadow"></div>
+                <div class="shadow"></div>
+                <div class="shadow"></div>
+            </div> 
+
+          
+
+          <!--   <div><svg style="
+                transform:  matrix(1, 0, 0, 1, 0, 0);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 187.3 93.7" height="150px" width="250px">
+              <path d="M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1 				c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" stroke-width="4" fill="none" id="outline" stroke="#4E4FEB"></path>
+              <path d="M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1 				c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" stroke-width="4" stroke="#4E4FEB" fill="none" opacity="0.05" id="outline-bg"></path>
+            </svg></div>  -->
+           <!--  <div><h2>Accediendo...</h2></div>  -->
+            
+         </div>
         <div class="gpLink">
+
+            <a onclick="loginInv()" class="a0"><h3>Invitado</h3></a>
             <a href="https://es-es.facebook.com/" class="a1"><h3>Acceder con Facebook</h3></a>
             <a href="https://twitter.com/?lang=es" class="a2"><h3>Acceder con Twitter</h3></a>
             <a href="https://accounts.google.com/" class="a3"><h3>Acceder con Google</h3></a>
         </div>
     </section>
 </div>
+<script src="../../main/login.js" ></script>
 </body>
 </html>
