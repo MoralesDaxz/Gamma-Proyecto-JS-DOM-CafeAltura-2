@@ -332,7 +332,7 @@ const iniciarApi = async () => {
         let result = products.filter((i) => i._id === idEvent);
         compra.unshift(result);
         localStorage.setItem("cafe", JSON.stringify(compra));
-        carritoNew(compraLS);
+        carritoNew(compra);
         divCarrito.classList.remove("hidden");
       });
     }); //END FOR
