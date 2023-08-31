@@ -13,7 +13,7 @@ const aHDContacto = headerTagA[5];
 const aHDTlf = headerTagA[6];
 const aHDInicio = headerTagA[7];
 const aHDCarro = headerTagA[10];
-const imgCar = aHDCarro.children[0];
+let imgCar = aHDCarro.children[0];
 //main - section - div contentProducts
 const secDivProducts = document.getElementById("content1DivProd");
 const divProducts = document.getElementById("content2Products");
@@ -68,12 +68,20 @@ function setAttributes(elemento, atrib) {
   }
 }
 
-if (localStorage.getItem("cafe") != null) {
-  imgCar.removeAttribute("src");
-  setAttributes(imgCar, { src: "../../img/home/Car-ON.png" });
+//Check si tenemos productos o no en el carro, identifica la cesta con bola roja o default
+function checkCar() {
+  if (compra.length >0) {
+    imgCar.removeAttribute("src");
+    setAttributes(imgCar, { src: "../../img/home/Car-ON.png"})
+  }else{
+    imgCar.removeAttribute("src");
+    setAttributes(imgCar, { src: "../../img/home/Carr.svg"});
+  }
 }
-
+checkCar()
+//Despliegue de productos en Modal - > Carrito
 function carritoNew(param) {
+  checkCar()
   if (localStorage.getItem("cafe") != null) {
     divCarrito.innerHTML = "";
     let carToStore = document.createElement("div");
@@ -98,7 +106,7 @@ function carritoNew(param) {
     setAttributes(divSvg, { id: "divSvg", title: "Ocultar" });
     setAttributes(tagA, { href: "../pages/carro/testCarro.html" });
     setAttributes(payNow, { id: "pay" });
-    setAttributes(imgCar, { src: "../../img/home/Car-ON.png" });
+    //setAttributes(imgCar, { src: "../../img/home/Car-ON.png" });
 
     divSvg.addEventListener("click", () => {
       divCarrito.classList.add("hidden");
@@ -137,10 +145,8 @@ function carritoNew(param) {
         let idEvent = event.target.id;
         let result1 = compra.filter((i) => i[0]._id !== idEvent); 
         compra = [...result1]; //Alimentando array con nuevos objetos
-        //compraLS = JSON.parse(localStorage.getItem("cafe"));
         localStorage.setItem("cafe", JSON.stringify(compra)); 
         carritoNew(compra);
-       
       }) 
     }
   } /*else {
@@ -238,6 +244,7 @@ setAttributes(aHDInicio, {
   href: "../../pages/login/login.html",
   target: "_blank",
 });
+//setAttributes(imgCar, { src: "../../img/home/Carr.svg" })
 //setAttributes(aHDCarro, { href: "../../pages/carro/testCarro.html" });
 //Footer
 setAttributes(aFtLogo, { href: "../../index.html" });

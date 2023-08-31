@@ -118,6 +118,17 @@ function setAttributes(elemento, atrib) {
     elemento.setAttribute(key, atrib[key]);
   }
 }
+//Check si tenemos productos o no en el carro, identifica la cesta con bola roja o default
+function checkCar() {
+  if (compra.length >0) {
+    imgCar.removeAttribute("src");
+    setAttributes(imgCar, { src: "../../img/home/Car-ON.png"})
+  }else{
+    imgCar.removeAttribute("src");
+    setAttributes(imgCar, { src: "../../img/home/Carr.svg"});
+  }
+}
+checkCar()
 
 //Ev. Listen -> Nav -> imagen -> Compra
 aHDCarro.addEventListener("click", () => {
@@ -191,6 +202,7 @@ divAction3.addEventListener("click", () => {
 });
 
 function carritoNew(param) {
+  checkCar()
   if (localStorage.getItem("cafe") != null) {
     divCarrito.innerHTML = "";
     let carToStore = document.createElement("div");
@@ -215,7 +227,8 @@ function carritoNew(param) {
     setAttributes(divSvg, { id: "divSvg", title: "Ocultar" });
     setAttributes(tagA, { href: "../pages/carro/testCarro.html" });
     setAttributes(payNow, { id: "pay" });
-    setAttributes(imgCar, { src: "../../img/home/Car-ON.png" });
+    
+   
 
     divSvg.addEventListener("click", () => {
       divCarrito.classList.add("hidden");
