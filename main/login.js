@@ -3,6 +3,7 @@ let invTag = document.getElementsByClassName('a0')
 let inv = 'invitado'
 
 function loginInv() {
+  localStorage.clear();
   localStorage.setItem("user", JSON.stringify(inv));
     spinner.classList.remove('spinner')
     spinner.classList.add('spinnerActivo')

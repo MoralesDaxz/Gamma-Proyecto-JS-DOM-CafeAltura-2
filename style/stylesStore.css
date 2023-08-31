@@ -58,6 +58,56 @@ body
     min-width: 1300px; /**********/
 }
 /* #endregion - Body*/
+.hidden {
+    display: none;
+  }
+
+
+#carrito /* carrito */
+{
+ 
+    position: fixed;
+    top: 90px;
+    right:4px;
+    background-color: rgba(230, 229, 229, 0.7);
+    z-index: 1001;
+    border-radius: 10px;
+    gap: 2%;
+    overflow-y:scroll;
+    height:480px;
+    backdrop-filter: blur(16px) saturate(180%);
+    
+}
+#carDiv1{
+    width: 300px;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    position: fixed;
+    
+}
+#pay/* Boton de pago -> */
+{
+    margin: 5px auto auto 2%;
+    border-color: rgb(156, 197, 178);
+    background-color: rgb(78, 140, 112);
+    color:white;
+    width:200px;
+    height:30px;
+    font-size: 20px;
+    font-family: "Outfit";
+    border-radius: 7px;
+    text-align: center;
+    cursor:pointer;
+}
+#pay:hover{
+    background-color: rgb(43, 103, 76);
+    
+}
+#divSvg{
+    margin-top: 5px;
+    cursor:pointer;
+}
 /* #region - Header            "Figma - Hero"*/
 header
 {
@@ -140,7 +190,7 @@ header
 {
     width: 24px; height: 24px;
     margin: 20px 0px 20px 78.05px;
-    src: url('');
+    cursor: pointer;
 }
 /* #endregion - Header - Figma "Hero" */
 /* #region - Main - Store */

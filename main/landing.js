@@ -4,13 +4,12 @@ let header = document.querySelector("header");
 let main = document.getElementById("contenMain");
 let usuarios = []; //Alm. de user creados apartir del formulario
 
-let compra = []; //Alm. de compras / LS cafe | [{},{},{}]
+let compra = JSON.parse(localStorage.getItem('cafe'))||[]; 
+//Alm. de compras / LS cafe | [{},{},{}]
 let divCarrito = document.createElement("div");
 divCarrito.id = "carrito";
 body.appendChild(divCarrito);
 let compraLS = JSON.parse(localStorage.getItem("cafe"));
-let getLS = JSON.parse(localStorage.getItem("cafe"));
-
 
 
 //Globales
@@ -49,9 +48,9 @@ let art1Section4 = articlesSection4[0];
 let art2Section4 = articlesSection4[1];
 let art3Section4 = articlesSection4[2];
 //Main - section4 - desplegables FAQ
-let divAction1=document.getElementById('boxH3_1') 
-let divAction2=document.getElementById('boxH3_2')
-let divAction3=document.getElementById('boxH3_3')
+let divAction1 = document.getElementById("boxH3_1");
+let divAction2 = document.getElementById("boxH3_2");
+let divAction3 = document.getElementById("boxH3_3");
 let art1Arrow1 = art1Section4.querySelector("img");
 let art2Arrow2 = art2Section4.querySelector("img");
 let art3Arrow3 = art3Section4.querySelector("img");
@@ -94,33 +93,34 @@ let aFtPoliPriv = tagAfooter[8];
 let aFtPoliCook = tagAfooter[9];
 let aFtTerminos = tagAfooter[10];
 
-let userInvitado = localStorage.getItem("user")
+let userInvitado = localStorage.getItem("user");
 
 //Limpiar LS al cerrar o refrescar pagina
 /* window.addEventListener("beforeunload", function () {
   localStorage.clear();
 }); */
 
-
 //Funcion de refrescar pagina
- function reload() {
+function reload() {
   location.reload();
-} 
+}
 
-
-if (localStorage.getItem('user')){//valueOf('invitado')
-  headerTagA[7].textContent=`Bienvenido`}
-else{headerTagA[7].textContent=`Iniciar sesion`}
+if (localStorage.getItem("user")) {
+  //valueOf('invitado')
+  headerTagA[7].textContent = `Bienvenido`;
+} else {
+  headerTagA[7].textContent = `Iniciar sesion`;
+}
 
 //Funcion asignar atributos
 function setAttributes(elemento, atrib) {
   for (const key in atrib) {
     elemento.setAttribute(key, atrib[key]);
   }
-} 
+}
 
 //Ev. Listen -> Nav -> imagen -> Compra
- aHDCarro.addEventListener("click", () => {
+aHDCarro.addEventListener("click", () => {
   if (
     divCarrito.classList.contains("hidden") &&
     localStorage.getItem("cafe") !== null
@@ -130,96 +130,96 @@ function setAttributes(elemento, atrib) {
     divCarrito.classList.add("hidden");
   }
 });
- 
-//FAQ -> Parrafos
+
+//FAQ -> acordion -> Parrafos
 //Evento -> flechas FAQ
 divAction1.addEventListener("click", () => {
-  let getPrf = document.getElementById('p1FAQ');
-  let divLine1 = document.getElementById('lineFaq1'); 
-  
+  let getPrf = document.getElementById("p1FAQ");
+  let divLine1 = document.getElementById("lineFaq1");
 
-  if (getPrf.classList.contains('labelPrf')) {
-    divLine1.classList.remove('lineFaq')
-    divLine1.classList.add('lineFaqActivo')
-    getPrf.classList.remove('labelPrf')
-    getPrf.classList.add('labelPrfActivo')
+  if (getPrf.classList.contains("labelPrf")) {
+    divLine1.classList.remove("lineFaq");
+    divLine1.classList.add("lineFaqActivo");
+    getPrf.classList.remove("labelPrf");
+    getPrf.classList.add("labelPrfActivo");
     art1Arrow1.style = `transition-property: rotate;transition-duration: .7s; rotate:180deg`;
-    
-  } else if(getPrf.classList.contains('labelPrfActivo')) { //abajo
-    divLine1.classList.add('lineFaq')
-    divLine1.classList.remove('lineFaqActivo')
-    getPrf.classList.remove('labelPrfActivo')
-    getPrf.classList.add('labelPrf')
+  } else if (getPrf.classList.contains("labelPrfActivo")) {
+    //abajo
+    divLine1.classList.add("lineFaq");
+    divLine1.classList.remove("lineFaqActivo");
+    getPrf.classList.remove("labelPrfActivo");
+    getPrf.classList.add("labelPrf");
     art1Arrow1.style = `transition-property: rotate;transition-duration: .7s; rotate:360deg`;
   }
 });
 divAction2.addEventListener("click", () => {
-  let getPrf = document.getElementById('p2FAQ');
-  let divLine2 = document.getElementById('lineFaq2'); 
- 
-  if (getPrf.classList.contains('labelPrf')) {
-    divLine2.classList.remove('lineFaq')
-    divLine2.classList.add('lineFaqActivo')
-    getPrf.classList.remove('labelPrf')
-    getPrf.classList.add('labelPrfActivo')
+  let getPrf = document.getElementById("p2FAQ");
+  let divLine2 = document.getElementById("lineFaq2");
+
+  if (getPrf.classList.contains("labelPrf")) {
+    divLine2.classList.remove("lineFaq");
+    divLine2.classList.add("lineFaqActivo");
+    getPrf.classList.remove("labelPrf");
+    getPrf.classList.add("labelPrfActivo");
     art2Arrow2.style = `transition-property: rotate;transition-duration: .7s; rotate:180deg`;
-  } else if(getPrf.classList.contains('labelPrfActivo')) { //abajo
-    divLine2.classList.add('lineFaq')
-    divLine2.classList.remove('lineFaqActivo')
-    getPrf.classList.remove('labelPrfActivo')
-    getPrf.classList.add('labelPrf')
+  } else if (getPrf.classList.contains("labelPrfActivo")) {
+    //abajo
+    divLine2.classList.add("lineFaq");
+    divLine2.classList.remove("lineFaqActivo");
+    getPrf.classList.remove("labelPrfActivo");
+    getPrf.classList.add("labelPrf");
     art2Arrow2.style = `transition-property: rotate;transition-duration: .7s; rotate:360deg`;
   }
 });
 divAction3.addEventListener("click", () => {
-  let getPrf = document.getElementById('p3FAQ');
-  let divLine3 = document.getElementById('lineFaq3'); 
-  if (getPrf.classList.contains('labelPrf')) {
-    divLine3.classList.remove('lineFaq')
-    divLine3.classList.add('lineFaqActivo')
-    getPrf.classList.remove('labelPrf')
-    getPrf.classList.add('labelPrfActivo')
+  let getPrf = document.getElementById("p3FAQ");
+  let divLine3 = document.getElementById("lineFaq3");
+  if (getPrf.classList.contains("labelPrf")) {
+    divLine3.classList.remove("lineFaq");
+    divLine3.classList.add("lineFaqActivo");
+    getPrf.classList.remove("labelPrf");
+    getPrf.classList.add("labelPrfActivo");
     art3Arrow3.style = `transition-property: rotate;transition-duration: .7s; rotate:180deg`;
-    
-  } else if(getPrf.classList.contains('labelPrfActivo')) { //abajo
-    divLine3.classList.add('lineFaq')
-    divLine3.classList.remove('lineFaqActivo')
-    getPrf.classList.remove('labelPrfActivo')
-    getPrf.classList.add('labelPrf')
-    art3Arrow3.style = `transition-property: rotate;transition-duration: .7s; rotate:360deg`;   
+  } else if (getPrf.classList.contains("labelPrfActivo")) {
+    //abajo
+    divLine3.classList.add("lineFaq");
+    divLine3.classList.remove("lineFaqActivo");
+    getPrf.classList.remove("labelPrfActivo");
+    getPrf.classList.add("labelPrf");
+    art3Arrow3.style = `transition-property: rotate;transition-duration: .7s; rotate:360deg`;
   }
 });
 
 function carritoNew(param) {
-  
   if (localStorage.getItem("cafe") != null) {
     divCarrito.innerHTML = "";
     let carToStore = document.createElement("div");
-    let tagA = document.createElement('a')
-    let payNow = document.createElement('button');
-    let divSvg = document.createElement('div')
+    let tagA = document.createElement("a");
+    let payNow = document.createElement("button");
+    let divSvg = document.createElement("div");
 
     payNow.innerText = "Pagar";
     divCarrito.appendChild(carToStore);
     carToStore.appendChild(tagA);
     carToStore.appendChild(divSvg);
     tagA.appendChild(payNow);
-    divSvg.innerHTML=
-   `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-stack-pop" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2b674c" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    divSvg.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-stack-pop" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2b674c" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <path d="M7 9.5l-3 1.5l8 4l8 -4l-3 -1.5" />
       <path d="M4 15l8 4l8 -4" />
       <path d="M12 11v-7" />
       <path d="M9 7l3 -3l3 3" />
-    </svg>`
- 
-    setAttributes(carToStore, { id: 'carDiv1'})
-    setAttributes(divSvg, { id: 'divSvg',title:'Ocultar'})
-    setAttributes(tagA, { href: "../pages/carro/testCarro.html"})
-    setAttributes(payNow, { id:"pay"})
-    setAttributes(imgCar, { src: "../../img/home/Car-ON.png"});
+    </svg>`;
 
-    divSvg.addEventListener('click',()=>{divCarrito.classList.add("hidden")})
+    setAttributes(carToStore, { id: "carDiv1" });
+    setAttributes(divSvg, { id: "divSvg", title: "Ocultar" });
+    setAttributes(tagA, { href: "../pages/carro/testCarro.html" });
+    setAttributes(payNow, { id: "pay" });
+    setAttributes(imgCar, { src: "../../img/home/Car-ON.png" });
+
+    divSvg.addEventListener("click", () => {
+      divCarrito.classList.add("hidden");
+    });
 
     for (const i of param) {
       i.forEach((x) => {
@@ -273,8 +273,7 @@ function carritoNew(param) {
       alert(`Carrito vacio - Realiza un compra`);
     });  
   }*/
-  
-}//END carrtoNew
+} //END carrtoNew
 carritoNew(compraLS);
 
 //Iniciar Api
@@ -284,9 +283,8 @@ const iniciarApi = async () => {
 
   const filterAvailable = promiseA.products.filter((n) => n.available);
   const filterUnAvailable = promiseA.products.filter(
-        (n) => n.available == false
+    (n) => n.available == false
   );
-
 
   const orderAvailable = filterAvailable.sort((a, b) => a.price - b.price); // disponible ordenado de menor a mayor por precio
   const orderUnAvailable = filterUnAvailable.sort((a, b) => a.price - b.price); // agotado ordenado de menor a mayor por precio
@@ -295,7 +293,7 @@ const iniciarApi = async () => {
   //Crear producto
   const getProducts = async () => {
     products.forEach((elemento, i) => {
-      let a = document.createElement("a");
+      let añadir = document.createElement("a");
       let div = document.createElement("div");
       let pName = document.createElement("p");
       let pPrice = document.createElement("p");
@@ -305,42 +303,39 @@ const iniciarApi = async () => {
       if (i >= 0 && i < 4 && elemento.available == true) {
         pName.innerText = elemento.brand;
         pPrice.innerText = `${elemento.price},00 €`;
-        a.innerText = `Añadir`;
+        añadir.innerText = `Añadir`;
 
         setAttributes(div, { class: `bagsHover bagsBorde` });
         setAttributes(img, { src: `${urlImg}`, class: "bagsImg" });
         setAttributes(pName, { class: "bags1Prf" });
         setAttributes(pPrice, { class: "bags2Prf" });
-        setAttributes(a, { class: "bagsLink", id: `${elemento._id}` });
+        setAttributes(añadir, { class: "bagsLink", id: `${elemento._id}` });
         artImagenes.appendChild(div);
         div.appendChild(img);
         div.appendChild(pName);
         div.appendChild(pPrice);
-        div.appendChild(a);
+        div.appendChild(añadir);
 
         if (elemento.available == false) {
           pName.innerText = elemento.brand;
           pPrice.innerText = `${elemento.price},00 €`;
-          a.innerText = `Agotado`;
-          a.disabled=true;
+          añadir.innerText = `Agotado`;
+          añadir.disabled = true;
           setAttributes(div, { class: `bagsHover_Agotado bagsBorde_Agotado` });
-          setAttributes(a, {
+          setAttributes(añadir, {
             class: "bagsLink_Agotado",
             id: `${elemento._id}`,
           });
         }
       }
-      
-      a.addEventListener("click", (event) => { //aclick
-       
+      añadir.addEventListener("click", (event) => {
+        //aclick
         let idEvent = event.target.id;
         let result = products.filter((i) => i._id === idEvent);
         compra.unshift(result);
         localStorage.setItem("cafe", JSON.stringify(compra));
-         /*  getLS =[...getLS] */
-          compra = [...compra]
-          /* compra.concat(getLS) */
-        
+        compra = [...compra];
+
         carritoNew(compra);
         divCarrito.classList.remove("hidden");
       });
@@ -421,13 +416,13 @@ form.addEventListener("submit", (event) => {
       mail: mailInput,
       tlfCodigo: inputCodigo.value,
       telefonoCompleto: `${tlfField1}${tlfField2}${tlfField3}${tlfField4}`,
-      textArea: event.target.area.value
+      textArea: event.target.area.value,
     };
     usuarios.unshift(user);
     localStorage.setItem("formulario", JSON.stringify(usuarios));
     setTimeout(() => {
-        registered();
-      }, 1000);
+      registered();
+    }, 1000);
   }
 });
 
