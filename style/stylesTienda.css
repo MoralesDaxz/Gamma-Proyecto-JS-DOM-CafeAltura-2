@@ -1,0 +1,565 @@
+/* #region - Clear CSS */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+display: block;
+}
+body {
+line-height: 1;
+}
+ol, ul {
+list-style: none;
+}
+blockquote, q {
+quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+content: '';
+content: none;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+a
+{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+/* #endregion */
+/* #region - Body */
+body
+{
+    font-family: 'Outfit', sans-serif;
+}
+#contenBody
+{
+    min-width: 1300px; /**********/
+}
+/* #endregion - Body*/
+.hidden {
+    display: none;
+  }
+
+
+#carrito /* carrito */
+{
+    position: fixed;
+    top: 90px;
+    right:4px;
+    background-color: rgba(230, 229, 229, 0.7);
+    z-index: 1001;
+    border-radius: 10px;
+    gap: 2%;
+    overflow-y:scroll;
+    height:250px;
+    backdrop-filter: blur(16px) saturate(180%);
+    
+}
+#carDiv1{
+    width: 300px;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    position: sticky;
+    
+}
+#pay/* Boton de pago -> */
+{
+    margin: 5px auto auto 10px;
+    border-color: rgb(156, 197, 178);
+    background-color: rgb(78, 140, 112);
+    color:white;
+    width:100px;
+    height:30px;
+    font-size: 20px;
+    font-family: "Outfit";
+    border-radius: 7px;
+    text-align: center;
+    cursor:pointer;
+}
+#pay:hover{
+    background-color: rgb(43, 103, 76);
+    
+}
+#divSvg{
+    margin-top: 5px;
+    cursor:pointer;
+}
+/* #region - Header            "Figma - Hero"*/
+header
+{
+    padding: 12px 40px;
+    background-color: #2B2A2B;
+    min-width: 1280px; /*Dado el caso podemos darle auto, sin embargo el SVG de logo se vera afectado*/
+    height: 64px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.boxHeader
+{
+    font-weight: 400;
+    font-size: 23.4628px;
+    line-height: 35px;
+    width: 186px;
+    height: 36px;
+    opacity: 0.86;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 7.33px;
+}
+.boxImg
+{
+    width: 20.53px; height: 24.93px;
+}
+.wrapHeader
+{
+    display: flex;
+    justify-content: space-between;
+    margin:16px auto 16px auto;
+    width: 512px;
+    height: 32px;
+    padding: 0px;
+    gap: 16px;
+}
+.wrapHeader a
+{
+    display: flex;
+    align-items: center;
+}
+.frmHeader
+{
+    display: flex;
+    align-items: center; 
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+.frmIcon
+{
+    margin: 23px 11px 23px auto;
+    width: 24px; height: 24px;
+}
+.frmTlf
+{
+    width: max-content; 
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    margin-right: 24px;
+}
+.frmInicio
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 12px auto 12px auto;   
+    background-color: #515051;
+    border-radius: 4px;
+    width: 130px;
+    height: 40px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+}
+.carImg
+{
+    width: 24px; height: 24px;
+    margin: 20px 0px 20px 78.05px;
+    cursor: pointer;
+}
+/* #endregion - Header - Figma "Hero" */
+/* #region - Main - Store */
+.divProducts{
+    height: 430px;
+}
+
+.titleProduct
+{
+    margin-top: 40px;
+    text-align: center;
+    color:rgb(42, 91, 69);
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 44px;
+}
+
+.coffeBags /* div - products */
+{
+    margin-top:40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:24px;
+    margin-bottom: 44px;
+}
+.bagsImg /* usado */
+{
+    width: 219.39px;
+    height: 219.39px;
+}
+.bags1Prf  /* usado */
+{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+    text-align: center;
+    margin-top:24px;
+    margin-bottom: 12px;
+}
+.bags2Prf  /* usado */
+{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 24px;
+}
+.bagsLink /* usado */
+{ 
+    width: fit-content;
+    height: 16px;
+    text-decoration: none;
+    background: rgba(42, 91, 69, 0.7); 
+    padding: 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.bagsBorde /* usado */
+{
+    width: 282px;
+    height: 391.39px;
+    border: 1px solid #E3DED7;
+    border-radius: 8px; 
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    padding-top: 24px;
+}
+.bagsHover:hover
+{   
+    background-color: #E3DED7;
+}
+.bagsHover:hover a
+{
+   background-color: #2A5B45; 
+}  
+/* Agotado */
+.bagsBorde_Agotado /* usado */
+{
+    opacity: 0.3;
+    width: 282px;
+    height: 391.39px;
+    border: 1px solid rgba(198, 28, 28,0.3);
+    border-radius: 8px; 
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    padding-top: 24px;
+    cursor:not-allowed
+    
+}
+.bagsLink_Agotado /* usado */
+{ 
+    width: fit-content;
+    height: 16px;
+    text-decoration: none;
+    background: rgb(198, 28, 28); 
+    padding: 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
+    
+}
+.bagsHover_Agotado:hover
+{   
+    background-color: rgba(106, 17, 17, 0.2);
+    
+}
+
+
+/* #endregion - Header - Figma "Hero" */
+/* #region - Main - Section2   "Figma - Cards Wrapper" */
+#cardSection2
+{
+    background: url(../img/home/Cards.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-width: 1280px;
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+}
+.cardTitle
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.cardTitle h2
+{
+    font-style: normal;  
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #FFFFFF;
+    margin-top: 48px;
+}
+#cardWraps
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    gap:24px;
+}
+.wrap
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FFFFFF;
+    width: 316px;
+    height: 232px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+}
+.wrap img
+{
+    margin-top: 24px;
+    width: 64px;
+    height: 64px;  
+}
+.wrapPrf1 /*Reutilizado en:  parrafos de cardWraps*/
+{
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    color: #2B2A2B;
+    height: 24px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+.wrapPrf2 /*Reutilizado en:  parrafos de cardWraps*/
+{
+    text-align: center;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #111827;
+    width: 268px;
+    height: 64px;
+}
+
+/* #endregion - Main - Seccion2 - "Figma - Cards Wrapper" */
+/* #region - Footer - Store */
+.contenFooter
+{
+    min-width: 1280px;
+    height: 310px;
+    background-color: #1F1815;
+    padding: 0px 40px 0px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.contenWrap
+{
+    min-width: 1200px;
+    display: flex;
+    flex-direction: column;
+}
+.boxColumn 
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.box1Flex
+{
+    display: flex;
+    flex-direction: column;
+    gap:16px; 
+}
+.footerLogo
+{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 35px;
+    color:#FFFFFF;
+    width: 186px;
+    height: 36px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 7.33px;
+    margin-bottom: 16px;
+}
+.art1Footer
+{
+    display:flex;
+    flex-direction: column;
+}
+.footerLogo p
+{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 23.4628px;
+    line-height: 35px;
+    color: #FFFFFF;
+}
+.footerLogo img
+{
+    width: 20.53px;
+    height: 24.93px;
+}
+.boxImg
+{
+    width: 20.53px;
+    height: 24.93px;
+}
+.footer1H3
+{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    color: #ffffff;
+    margin-bottom: 16px;
+}
+.footerBox1
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #515051;
+    border-radius: 4px;
+    width: 182px;
+    height: 48px;
+    gap:15px;
+    margin-bottom: 16px;
+}
+.footerBox1 img
+{
+    width: 24px;
+    height: 24px;
+}
+.footerBox1 p
+{
+    color: #ffffff;
+}
+.footerBox2
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 232px;
+    height: 48px;
+    background: #515051;
+    border-radius: 4px;
+    gap:15px;
+}
+.footerBox2 img
+{
+    width: 24px;
+    height: 24px; 
+}
+.footerBox2 p
+{
+    color: #ffffff;
+}
+.subboxFooter
+{
+    display: flex;
+    gap:127px;
+    position: relative;
+    right: 20%;
+}
+.art2Footer
+{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   gap:16px; 
+}
+.art2Footer a
+{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    height: 16px;
+}
+.art3Footer
+{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+   
+    gap:16px; 
+}
+.art3Footer a
+{
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    height: 16px;
+}
+.boxCopy
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2B2A2B;
+    width: 100%;
+    color: #ffffff;
+    height: 40px;
+    padding: 12px 0px;
+}
+.copyPrf
+{
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+}
+/* #endregion - x Footer x - Footer - "Figma - Footer" */

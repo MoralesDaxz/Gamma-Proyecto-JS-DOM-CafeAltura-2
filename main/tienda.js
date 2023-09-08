@@ -32,10 +32,12 @@ const aFtPoliPriv = tagAfooter[8];
 const aFtPoliCook = tagAfooter[9];
 const aFtTerminos = tagAfooter[10];
 
+
 let compraLS = JSON.parse(localStorage.getItem("cafe"));
 let compra = JSON.parse(localStorage.getItem("cafe")) || [];
 let divCarrito = document.createElement("div");
 divCarrito.id = "carrito";
+divCarrito.classList.add("hidden"); //Inciamos ventana con carrito oculto
 body.appendChild(divCarrito);
 
 aHDCarro.addEventListener("click", () => {
@@ -70,18 +72,18 @@ function setAttributes(elemento, atrib) {
 
 //Check si tenemos productos o no en el carro, identifica la cesta con bola roja o default
 function checkCar() {
-  if (compra.length >0) {
+  if (compra.length > 0) {
     imgCar.removeAttribute("src");
-    setAttributes(imgCar, { src: "../../img/home/Car-ON.png"})
-  }else{
+    setAttributes(imgCar, { src: "../../img/home/Car-ON.png" });
+  } else {
     imgCar.removeAttribute("src");
-    setAttributes(imgCar, { src: "../../img/home/Carr.svg"});
+    setAttributes(imgCar, { src: "../../img/home/Carr.svg" });
   }
 }
-checkCar()
+checkCar();
 //Despliegue de productos en Modal - > Carrito
 function carritoNew(param) {
-  checkCar()
+  checkCar();
   if (localStorage.getItem("cafe") != null) {
     divCarrito.innerHTML = "";
     let carToStore = document.createElement("div");
@@ -104,7 +106,7 @@ function carritoNew(param) {
 
     setAttributes(carToStore, { id: "carDiv1" });
     setAttributes(divSvg, { id: "divSvg", title: "Ocultar" });
-    setAttributes(tagA, { href: "../pages/carro/testCarro.html" });
+    setAttributes(tagA, { href: "../../pages/carro/testCarro.html" });
     setAttributes(payNow, { id: "pay" });
     //setAttributes(imgCar, { src: "../../img/home/Car-ON.png" });
 
@@ -116,44 +118,40 @@ function carritoNew(param) {
       let contentDiv = document.createElement("div");
       let div1 = document.createElement("div");
       let div2 = document.createElement("div");
-      let pUnd = document.createElement("p");
+      //let pUnd = document.createElement("p");
       let pName = document.createElement("p");
       let pPrecio = document.createElement("p");
-      let btnRetirar = document.createElement("button"); 
+      //let btnRetirar = document.createElement("button");
       i.forEach((x) => {
-
-        pUnd.innerText = `1 Unidad`;
+        //pUnd.innerText = `1 Unidad`;
         pName.innerText = `${x.brand}`;
         pPrecio.innerText = `${x.price},00€`;
-        btnRetirar.innerText = `Retirar`;
-        btnRetirar.id=x._id
-        contentDiv.style = `width:340px;margin-top:40px;border-bottom:solid rgb(227,222,215) 1px;display:flex;flex-direction:row;`;
-        div1.style = `height:120px;width:120px;background-image: url('${x.img_url}');background-repeat: no-repeat;background-size: 100%;background-position:center`;
+        //btnRetirar.innerText = `Retirar`;
+        //btnRetirar.id=x._id
+        contentDiv.style = `width:340px;margin:5px auto 5px auto;border-bottom:solid rgb(227,222,215) 1px;display:flex;flex-direction:row;`;
+        div1.style = `height:100px;width:100px;background-image: url('${x.img_url}');background-repeat: no-repeat;background-size: 100%;background-position:center`;
         div2.style = `height:120px;width:220px;display:flex;flex-direction:column;gap:5px;height:auto;justify-content:center;align-items:start;`;
-        btnRetirar.style = `margin:0 auto;;width:50px;border-color:rgb(196, 33, 33);text-align:center;font-size:12px;background-color:rgb(163, 27, 27); color:white; border-radius:5px;cursor:pointer`;
+        //btnRetirar.style = `margin:0 auto;;width:50px;border-color:rgb(196, 33, 33);text-align:center;font-size:12px;background-color:rgb(163, 27, 27); color:white; border-radius:5px;cursor:pointer`;
 
         divCarrito.appendChild(contentDiv);
         contentDiv.appendChild(div1);
         contentDiv.appendChild(div2);
-        div2.appendChild(pUnd);
+        //div2.appendChild(pUnd);
         div2.appendChild(pName);
         div2.appendChild(pPrecio);
-        div2.appendChild(btnRetirar);
-
+        //div2.appendChild(btnRetirar);
       });
-     btnRetirar.addEventListener('click',(event)=>{
+      /*  btnRetirar.addEventListener('click',(event)=>{
+
         let idEvent = event.target.id;
-        let result1 = compra.filter((i) => i[0]._id !== idEvent); 
+        let result1 = compra.filter((i,index) => i[0]._id !== idEvent); 
+    
         compra = [...result1]; //Alimentando array con nuevos objetos
         localStorage.setItem("cafe", JSON.stringify(compra)); 
         carritoNew(compra);
-      }) 
+      })  */
     }
-  } /*else {
-     aHDCarro.addEventListener("click", () => {
-      alert(`Carrito vacio - Realiza un compra`);
-    });  
-  }*/
+  }
 } //END carrtoNew
 carritoNew(compraLS);
 //Iniciar Api
@@ -208,9 +206,8 @@ const iniciarApi = async () => {
           });
         }
         añadir.addEventListener("click", (event) => {
-          console.log(products);
           let idEvent = event.target.id;
-          let result = products.filter((i) => i._id === idEvent);
+          let result = products.filter((item) => item._id === idEvent);
           if (result[0].available !== false) {
             compra.unshift(result);
             localStorage.setItem("cafe", JSON.stringify(compra));

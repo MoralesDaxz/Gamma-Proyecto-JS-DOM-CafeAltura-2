@@ -3,14 +3,13 @@ let body = document.getElementById("contenBody");
 let header = document.querySelector("header");
 let main = document.getElementById("contenMain");
 let usuarios = []; //Alm. de user creados apartir del formulario
-
 let compra = JSON.parse(localStorage.getItem('cafe'))||[]; 
+
 //Alm. de compras / LS cafe | [{},{},{}]
 let divCarrito = document.createElement("div");
 divCarrito.id = "carrito";
 body.appendChild(divCarrito);
 let compraLS = JSON.parse(localStorage.getItem("cafe"));
-
 
 //Globales
 let headerTagA = header.getElementsByTagName("a");
@@ -105,6 +104,7 @@ function reload() {
   location.reload();
 }
 
+
 if (localStorage.getItem("user")) {
   //valueOf('invitado')
   headerTagA[7].textContent = `Bienvenido`;
@@ -122,10 +122,10 @@ function setAttributes(elemento, atrib) {
 function checkCar() {
   if (compra.length >0) {
     imgCar.removeAttribute("src");
-    setAttributes(imgCar, { src: "../../img/home/Car-ON.png"})
+    setAttributes(imgCar, { src: "img/home/Car-ON.png"})
   }else{
     imgCar.removeAttribute("src");
-    setAttributes(imgCar, { src: "../../img/home/Carr.svg"});
+    setAttributes(imgCar, { src: "img/home/Carr.svg"});
   }
 }
 checkCar()
@@ -251,8 +251,8 @@ function carritoNew(param) {
         //btnNo.innerText = `Retirar`;
         //btnNo.id=x._id
         //divCarrito.style=`display:flex;flex-direction:column; gap:10px`
-        contentDiv.style = `width:340px;margin-top:40px;border-bottom:solid rgb(227,222,215) 1px;display:flex;flex-direction:row;`;
-        div1.style = `height:120px;width:120px;background-image: url('${x.img_url}');background-repeat: no-repeat;background-size: 100%;background-position:center`;
+        contentDiv.style = `width:340px;margin:5px auto 5px auto;border-bottom:solid rgb(227,222,215) 1px;display:flex;flex-direction:row;`;
+        div1.style = `height:100px;width:100px;background-image: url('${x.img_url}');background-repeat: no-repeat;background-size: 100%;background-position:center`;
         div2.style = `height:120px;width:220px;display:flex;flex-direction:column;gap:5px;height:auto;justify-content:center;align-items:start;`;
         //btnNo.style = `margin:0 auto;;width:50px;border-color:rgb(196, 33, 33);text-align:center;font-size:12px;background-color:rgb(163, 27, 27); color:white; border-radius:5px;cursor:pointer`;
 
@@ -294,9 +294,9 @@ const iniciarApi = async () => {
   let promise = await fetch("https://cafe-de-altura.vercel.app/api/products");
   let promiseA = await promise.json();
 
-  const filterAvailable = promiseA.products.filter((n) => n.available);
+  const filterAvailable = promiseA.products.filter((item) => item.available);
   const filterUnAvailable = promiseA.products.filter(
-    (n) => n.available == false
+    (item) => item.available == false
   );
 
   const orderAvailable = filterAvailable.sort((a, b) => a.price - b.price); // disponible ordenado de menor a mayor por precio
@@ -305,7 +305,7 @@ const iniciarApi = async () => {
 
   //Crear producto
   const getProducts = async () => {
-    products.forEach((elemento, i) => {
+    products.forEach((elemento, indice) => {
       let añadir = document.createElement("a");
       let div = document.createElement("div");
       let pName = document.createElement("p");
@@ -313,7 +313,7 @@ const iniciarApi = async () => {
       let img = document.createElement("img");
 
       let urlImg = elemento.img_url;
-      if (i >= 0 && i < 4 && elemento.available == true) {
+      if (indice >= 0 && indice < 4 && elemento.available == true) {
         pName.innerText = elemento.brand;
         pPrice.innerText = `${elemento.price},00 €`;
         añadir.innerText = `Añadir`;
@@ -322,7 +322,7 @@ const iniciarApi = async () => {
         setAttributes(img, { src: `${urlImg}`, class: "bagsImg" });
         setAttributes(pName, { class: "bags1Prf" });
         setAttributes(pPrice, { class: "bags2Prf" });
-        setAttributes(añadir, { class: "bagsLink", id: `${elemento._id}` });
+        setAttributes(añadir, { class: "bagsLink", id: elemento._id});
         artImagenes.appendChild(div);
         div.appendChild(img);
         div.appendChild(pName);
@@ -337,20 +337,23 @@ const iniciarApi = async () => {
           setAttributes(div, { class: `bagsHover_Agotado bagsBorde_Agotado` });
           setAttributes(añadir, {
             class: "bagsLink_Agotado",
-            id: `${elemento._id}`,
+            id: elemento._id,
           });
         }
       }
       añadir.addEventListener("click", (event) => {
-        //aclick
-        let idEvent = event.target.id;
-        let result = products.filter((i) => i._id === idEvent);
+      
+        const nameEvent = event.target.parentElement.querySelector('p').innerText;
+        
+        let result = products.filter((i) => i.brand === nameEvent);
+       /*let idEvent = event.target.id;
+        let result = products.filter((item,ind) => {
+          if (item.brand === nameEvent) {
+          return item.idUnico = uuid() */
         compra.unshift(result);
         localStorage.setItem("cafe", JSON.stringify(compra));
-        compra = [...compra];
-
-        carritoNew(compra);
         divCarrito.classList.remove("hidden");
+        carritoNew(compra);
       });
     }); //END FOR
   }; //END getProducts

@@ -1,15 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../style/stylesCompra.css">
     <title>Compra</title>
 </head>
+
 <body>
-    <h2> Bienvenido </h2>
-    <hr>
-    <h2>Carro de compras</h2>
-    <hr>
-    <a href="../../index.html">Inicio</a>
+    <!--#region - Header - Navbar  -->
+    <header>
+        <a class="boxHeader">
+
+            <p>cafedealtura.com</p>
+            <img class="boxImg" src="../../img/home/Coffe.svg" alt="Logo">
+        </a>
+
+        <div class="wrapHeader">
+            <a>Tienda</a>
+            <a>Suscripción</a>
+            <a>Para empresas</a>
+            <a>Sobre nosotros</a>
+            <a>Contacto</a>
+        </div>
+        <div class="frmHeader">
+            <img class="frmIcon" src="../../img/home/Icon.svg" alt="iconTlf">
+            <a class="frmTlf"> +34 919 49 05 18</a>
+            <a class="frmInicio">Iniciar sesión<a />
+        </div>
+        <a class="carImg">
+            <img src="../../img/home/Carr.svg">
+        </a>
+    </header>
+    <!--#endregion - Header-->
+    <!--#region - Main -->
+    <main>
+        <section id="content1DivProd" class="contenNew">
+            <h1 class="titleProduct">Cesta (<span id="cantItems">0</span>)</h1>
+        </section>
+        <section id="containCesta">
+            <div id='containProducts'>
+                <h2>Productos</h2>
+                <div id="product">
+
+                </div>
+                <div id="delivery">
+                    <h2>Seleccionar Envio</h2>
+                    <div>
+
+                    </div>
+
+                </div>
+            </div><!-- //1 -->
+            <div id='containTotal'>
+                Total Carrito
+                <div>
+
+                </div>
+                <div id="btnCheckout">
+
+                </div>
+            </div><!-- //2 -->
+        </section>
+    </main>
+    <!--#endregion - Main-->
+    <!--#region - Footer -->
+    <section class="boxCopy">
+        <div>
+            <p class="copyPrf">Todos los derechos reservados - Café de Altura SL - 2022</p>
+        </div>
+    </section>
+    <!--#endregion - Footer-->
+    <script src="../../main/compra.js"></script>
 </body>
+
 </html>
